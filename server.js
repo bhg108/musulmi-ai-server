@@ -3,7 +3,7 @@ const cors = require('cors');
 const OpenAI = require('openai');
 
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 app.use(cors());
 app.use(express.json());
@@ -63,6 +63,6 @@ app.post('/chat', async (req, res) => {
   }
 });
 
-app.listen(PORT, '127.0.0.1', () => {
-  console.log(`AI server running at http://127.0.0.1:${PORT}`);
+app.listen(PORT, () => {
+  console.log(`AI server running on port ${PORT}`);
 });
