@@ -328,7 +328,7 @@ app.post('/chat', async (req, res) => {
     console.error('OpenAI error full:', error);
 
     return res.status(error?.status || 500).json({
-      reply: \`Matsala daga AI server: \${error?.message || 'Unknown error'}\`
+      reply: `Matsala daga AI server: ${error?.message || 'Unknown error'}\`
     });
   }
 });
