@@ -159,6 +159,7 @@ app.get('/', (_req, res) => {
       gap:10px;
       flex-wrap:wrap;
       margin:0 0 14px;
+      padding:0 16px 12px;
     }
     .chip{
       background:#fff;
@@ -172,7 +173,7 @@ app.get('/', (_req, res) => {
     .status{
       font-size:14px;
       color:var(--muted);
-      padding:0 4px 12px;
+      padding:0 16px 12px;
     }
     @media (max-width:700px){
       .title{font-size:30px}
@@ -314,8 +315,7 @@ app.post('/chat', async (req, res) => {
 
     const response = await client.responses.create({
       model: 'gpt-4o-mini',
-      instructions:
-        'Kai mataimaki ne na Musulmi Hausa app. Ka fara da sallama idan ya dace. Ka rika amsa da Hausa mai sauƙi, girmamawa, da fahimta. Idan tambayar ta shafi addini, ka yi taka-tsantsan, kada ka kirkiri hujjoji ko ayoyi. Idan ba ka da tabbaci, ka faɗa a hankali cewa a duba ingantattun malamai ko majiyoyi.',
+      instructions: 'Kai mataimaki ne na Musulmi Hausa app. Ka fara da sallama idan ya dace. Ka rika amsa da Hausa mai sauƙi, girmamawa, da fahimta. Idan tambayar ta shafi addini, ka yi taka-tsantsan, kada ka kirkiri hujjoji ko ayoyi. Idan ba ka da tabbaci, ka faɗa a hankali cewa a duba ingantattun malamai ko majiyoyi.',
       input: userMessage
     });
 
@@ -328,11 +328,11 @@ app.post('/chat', async (req, res) => {
     console.error('OpenAI error full:', error);
 
     return res.status(error?.status || 500).json({
-      reply: `Matsala daga AI server: ${error?.message || 'Unknown error'}\`
+      reply: 'Matsala daga AI server: ' + (error?.message || 'Unknown error')
     });
   }
 });
 
 app.listen(PORT, () => {
-  console.log(\`AI server running on port \${PORT}\`);
+  console.log('AI server running on port ' + PORT);
 });
